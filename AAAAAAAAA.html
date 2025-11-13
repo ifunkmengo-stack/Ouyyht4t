@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu App de Jogos</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ---- Reset e Estilo Geral ---- */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* Fundo escuro (carvão) */
+            background-color: #1a1a1a;
+            color: #f0f0f0; /* Texto quase branco */
+        }
+
+        /* ---- Cabeçalho ---- */
+        header {
+            background-color: #2a2a2a; /* Cinza um pouco mais claro */
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 3px solid #00b45a; /* Verde relvado */
+        }
+
+        header h1 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        /* ---- Conteúdo Principal ---- */
+        main {
+            padding: 10px;
+        }
+
+        h2 {
+            color: #ffffff;
+            border-bottom: 2px solid #00b45a; /* Verde relvado */
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+
+        /* ---- Destaque (Player Principal) ---- */
+        .destaque {
+            background-color: #2a2a2a;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .player-video {
+            background-color: #000;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* Proporção 16:9 */
+        }
+
+        .player-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ---- Lista de Jogos (Seleção) ---- */
+        .lista-jogos {
+            display: grid;
+            /* Duas colunas em telemóveis */
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        /* Em ecrãs maiores, 4 colunas */
+        @media (min-width: 768px) {
+            .lista-jogos {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .jogo {
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .jogo-times {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #ffffff;
+        }
+
+        .jogo-liga {
+            font-size: 0.8em;
+            color: #ccc;
+        }
+
+        .btn-assistir {
+            display: block;
+            background-color: #00b45a; /* Verde relvado */
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1em;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-assistir:hover {
+            background-color: #008f47; /* Verde mais escuro */
+        }
+
+        /* ---- Rodapé ---- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2a2a2a;
+            margin-top: 30px;
+            border-top: 2px solid #444;
+            font-size: 0.8em;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Futebol Ao Vivo</h1>
+    </header>
+
+    <main>
+        <div class="destaque">
+            <div class="player-video">
+                <iframe 
+                    id="main-player"
+                    src="https://embedtv-5.icu/premiere" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <h2>Escolha o Jogo</h2>
+        
+        <div class="lista-jogos">
+            
+            <div class="jogo">
+                <div>
+                    <span class="jogo-liga">Brasileirão</span>
+                    <h4 class="jogo-times">Flamengo vs Palmeiras</h4>
+                </div>
+                <button class="btn-assistir" data-src="https://embedtv-5.icu/premiere">
+                    Assistir
+                </button>
+            </div>
+
+            <div class="jogo">
+                <div>
+                    <span class="jogo-liga">Champions League</span>
+                    <h4 class="jogo-times">Real Madrid vs Bayern</h4>
+                </div>
+                <button class="btn-assistir" data-src="https://embedtv-5.icu/sportv1">
+                    Assistir
+                </button>
+            </div>
+
+            <div class="jogo">
+                <div>
+                    <span class="jogo-liga">La Liga</span>
+                    <h4 class="jogo-times">Barcelona vs Getafe</h4>
+                </div>
+                <button class="btn-assistir" data-src="https://embedtv-5.icu/espn1">
+                    Assistir
+                </button>
+            </div>
+
+            <div class="jogo">
+                <div>
+                    <span class="jogo-liga">Brasileirão</span>
+                    <h4 class="jogo-times">Corinthians vs São Paulo</h4>
+                </div>
+                <button class="btn-assistir" data-src="https://embedtv-5.icu/premiere2">
+                    Assistir
+                </button>
+            </div>
+            
+             </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Todos os direitos reservados.</p>
+    </footer>
+
+    
+    <script>
+        // Espera a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Pega o iframe principal
+            const mainPlayer = document.getElementById('main-player');
+            
+            // Pega TODOS os botões de assistir
+            const botoesAssistir = document.querySelectorAll('.btn-assistir');
+            
+            // Adiciona um "ouvinte" de clique para cada botão
+            botoesAssistir.forEach(function(botao) {
+                botao.addEventListener('click', function() {
+                    
+                    // 1. Pega o link do atributo 'data-src' do botão que foi clicado
+                    const novoLink = botao.getAttribute('data-src');
+                    
+                    // 2. Atualiza o 'src' (o link) do player principal
+                    mainPlayer.src = novoLink;
+                    
+                    // 3. (Opcional) Rola a página para o topo para ver o player
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
